@@ -1,2 +1,4 @@
 #!/bin/bash
-service ssh start
+
+/usr/sbin/sshd
+yarn start:prod

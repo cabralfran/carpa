@@ -1,7 +1,5 @@
 FROM node:14-alpine 
 
-WORKDIR /app
-ADD . /app
 
 # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
 RUN apk add openssh \
@@ -19,10 +17,14 @@ RUN chmod +x /tmp/ssh_setup.sh \
 # Open port 2222 for SSH access
 EXPOSE 2222
 
-COPY init_container.sh /opt/startup
+COPY init_container.sh /opt/startup/init_container.sh
 RUN chmod 755 /opt/startup/init_container.sh
+
+
+WORKDIR /app
+ADD . /app
 
 RUN yarn install
 RUN yarn build
 
-ENTRYPOINT ["/opt/startup/init_container.sh","yarn start:prod"]
+ENTRYPOINT ["sh", "/opt/startup/init_container.sh"]
