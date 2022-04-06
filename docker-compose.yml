@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  helloworld-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: helloworld:dev
+    restart: unless-stopped
+    container_name: helloworld-container
+
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+
+    ports:
+      - '3000:3000'
+
+networks:
+  default:
+    name: helloworld-network
+
+
