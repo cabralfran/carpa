@@ -11,10 +11,10 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build . -t containerregistrytestinter.azurecr.io/TestWebAppDockerContainer:${{ github.sha }}
-          docker push containerregistrytestinter.azurecr.io/TestWebAppDockerContainer:${{ github.sha }}
+          docker build . -t containerregistrytestinter.azurecr.io/testwebappdockercontainer:${{ github.sha }}
+          docker push containerregistrytestinter.azurecr.io/testwebappdockercontainer:${{ github.sha }}
       - uses: azure/webapps-deploy@v2
         with:
           app-name: 'TestWebAppDockerContainer'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: 'containerregistrytestinter.azurecr.io/TestWebAppDockerContainer:${{ github.sha }}'
+          images: 'containerregistrytestinter.azurecr.io/testwebappdockercontainer:${{ github.sha }}'
