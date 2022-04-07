@@ -8,10 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          PRUEBA: ${{ secrets.PRUEBA }}
       - uses: azure/docker-login@v1
         with:
           login-server: containerregistrytestinter.azurecr.io
