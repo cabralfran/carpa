@@ -1,11 +1,11 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
-
+import { getEnv } from './config';
 @Injectable()
 export class AppService {
   private readonly logger = new Logger(AppService.name);
 
   getHello(): any {
-    const response = { hi: 'Hello World 🌎️', env: 'main' };
+    const response = { hi: 'Hello World 🌎️', env: 'main' + getEnv('PRUEBA', 'NADA') };
     this.logger.log(`response -> ${JSON.stringify(response)}`);
     return response;
   }
