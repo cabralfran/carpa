@@ -5,7 +5,7 @@ export class AppService {
   private readonly logger = new Logger(AppService.name);
 
   getHello(): any {
-    const response = { hi: 'Hello World 🌎️', env: 'main' + getEnv('PRUEBA', 'NADA') };
+    const response = { hi: 'Hello World 🌎️', env: 'main' + getEnv('AAA', 'NADA') };
     this.logger.log(`response -> ${JSON.stringify(response)}`);
     return response;
   }
